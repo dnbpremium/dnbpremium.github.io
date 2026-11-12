@@ -143,6 +143,16 @@ footer .logo{font-size:16px;color:var(--bone)}
 .steps b{display:block;font-size:20px;font-weight:500;margin-bottom:6px}
 .steps p{color:var(--mute);font-weight:300;margin:0}
 .sum li span:first-child{padding-right:8px}
+
+.islw{border-bottom:1px solid var(--ln)}
+.ihead{display:grid;width:calc(100% + 24px);border:0;border-top:1px solid var(--ln);background:none;font:inherit;color:inherit;text-align:left;cursor:pointer;transition:background .25s}
+.ihead:hover,.ihead:focus-visible,.ihead[aria-expanded="true"]{background:rgba(212,32,47,.06);outline:none}
+.ihead:hover h3,.ihead:focus-visible h3{transform:translateX(8px)}
+.ipanel{padding:6px 0 34px 92px}
+.ipanel:not([hidden]){animation:up .45s cubic-bezier(.2,.7,.2,1) both}
+.ipanel .row{margin-top:0}
+.ipanel .note{margin-top:14px}
+@media(max-width:760px){.ipanel{padding-left:0}}
 </style>
 </head>
 <body>
@@ -174,6 +184,13 @@ footer .logo{font-size:16px;color:var(--bone)}
   <a class="pr" href="https://t.me/TracyCastle?text=Здравствуйте! Хочу посмотреть демо бота для анализа кошельков Solana"><span class="n">01</span><div><h3>Анализ кошельков Solana</h3><p>Telegram-бот: по адресу находит источник средств и дочерние кошельки, а ИИ коротко комментирует схему.</p></div><div class="t"><span class="lk">Закрытый бот, демо по запросу</span><span>Python</span><span>Helius</span><span>ИИ</span></div></a>
   <a class="pr" href="https://t.me/TracyCastle?text=Здравствуйте! Хочу посмотреть демо DNBbot"><span class="n">02</span><div><h3>DNBbot</h3><p>Telegram-бот крипто-сигналов: данные с биржи, новости и ИИ-разбор.</p></div><div class="t"><span class="lk">Закрытый бот, демо по запросу</span><span>Python</span><span>BingX</span><span>ИИ</span></div></a>
   <a class="pr" href="https://dnbpremium.github.io/ads/"><span class="n">03</span><div><h3>Витрина визиток</h3><p>Десять премиальных сайтов-визиток для разных ниш: от барбершопа до недвижимости. Смотреть →</p></div><div class="t"><span>HTML</span><span>CSS</span><span>Дизайн</span></div></a>
+  <div class="islw">
+    <button class="pr ihead" id="ibtn" type="button" aria-expanded="false" aria-controls="ipanel"><span class="n">04</span><div><h3>Island</h3><p>Динамический остров для Windows: анимированный смайлик со своими эмоциями и функции для быстрого доступа в один клик. Сделал сам.</p></div><div class="t"><span class="lk">Демо и скачивание</span><span>Windows</span><span>Electron</span><span>Анимация</span></div></button>
+    <div class="ipanel" id="ipanel" hidden>
+      <div class="row"><a class="btn" href="https://t.me/TracyCastle?text=Здравствуйте! Хочу посмотреть демо Island">Запросить демо в Telegram</a><a class="btn g" href="https://github.com/dnbpremium/dnbpremium.github.io/releases/latest/download/Island-Setup.exe">Скачать для Windows</a></div>
+      <p class="note">Установщик для Windows, около 78 МБ. Если Windows предупредит о неизвестном издателе, нажмите «Подробнее» → «Выполнить в любом случае».</p>
+    </div>
+  </div>
 </section>
 
 <section id="how">
@@ -307,6 +324,12 @@ mkTypes();mkTiers();mkRush();draw();
     addEventListener("pointermove",function(e){tx=e.clientX;ty=e.clientY});
     (function loop(){x+=(tx-x)*.08;y+=(ty-y)*.08;r.style.setProperty("--mx",x+"px");r.style.setProperty("--my",y+"px");requestAnimationFrame(loop);})();
   }
+})();
+</script>
+<script>
+(function(){
+  var b=document.getElementById("ibtn"),p=document.getElementById("ipanel");if(!b||!p)return;
+  b.addEventListener("click",function(){var o=b.getAttribute("aria-expanded")==="true";b.setAttribute("aria-expanded",o?"false":"true");p.hidden=o;});
 })();
 </script>
 </body>
